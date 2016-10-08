@@ -17,24 +17,21 @@
 @end
 
 @interface SettingsView(Private)
--(void)setupView;
+-(void)setupSettingsView;
 @end
 
 @implementation SettingsView
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupView];
+        [self setupSettingsView];
     }
     return self;
 }
-
 @end
 
 @implementation SettingsView(Private)
-- (void) setupView{
+- (void) setupSettingsView{
     [self setBackgroundColor:[UIColor clearColor]];
     [self setupBackground];
     [self setupButton];
@@ -66,14 +63,10 @@
     
     [_button setBackgroundColor:[UIColor blueColor]];
     [_button addTarget:self action:@selector(dismissSettings) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
-- (void)dismissSettings
-{
+- (void)dismissSettings {
     [_button setBackgroundColor:[UIColor yellowColor]];
     [self.delegate buttonTapped];
 }
-
-
 @end

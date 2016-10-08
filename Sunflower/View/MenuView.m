@@ -10,38 +10,34 @@
 #import "UIView+Autolayout.h"
 #import "SunflowerCommon.h"
 
-@interface MenuView()
-{
-    UIButton *_PlayButton;
-    UIButton *_SettingsButton;
-    UIButton *_ProfileButton;
-    UIButton *_LevelButton;
-    UIButton *_CoinButton;
-    UIView *_UserData;
-    UILabel *_UserName;
-    UILabel *_CoinAmount;
+@interface MenuView() {
+    UIButton *_playButton;
+    UIButton *_settingsButton;
+    UIButton *_profileButton;
+    UIButton *_levelButton;
+    UIButton *_coinButton;
+    UIView *_userData;
+    UILabel *_userName;
+    UILabel *_coinAmount;
 }
 @end
 
 @interface MenuView(Private)
--(void)setupView;
+-(void)setupMenuView;
 @end
 
 @implementation MenuView
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupView];
+        [self setupMenuView];
     }
     return self;
 }
-
 @end
 
 @implementation MenuView(Private)
-- (void) setupView{
+- (void) setupMenuView{
     [self setBackgroundColor: [UIColor colorWithPatternImage:[UIImage imageNamed:@"test.jpg"]]];
     [self setupPlayButton];
     [self setupProfileButton];
@@ -52,112 +48,109 @@
 }
 
 - (void) setupPlayButton{
-    _PlayButton = [[UIButton alloc]initWithFrame:CGRectZero];
-    [_PlayButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_PlayButton];
+    _playButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_playButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_playButton];
     
-    [_PlayButton addWidthConstraint:150];
-    [_PlayButton addHeightConstraint:70];
-    [_PlayButton addCenterXConstraint];
-    [_PlayButton addBottomConstraint:PLAY_BUTTON_BOTTOM_HEIGHT];
+    [_playButton addWidthConstraint:150];
+    [_playButton addHeightConstraint:70];
+    [_playButton addCenterXConstraint];
+    [_playButton addBottomConstraint:PLAY_BUTTON_BOTTOM_HEIGHT];
     
-    [_PlayButton setBackgroundImage:[UIImage imageNamed:@"PlayButton.png"] forState:UIControlStateNormal];
-    [_PlayButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_playButton setBackgroundImage:[UIImage imageNamed:@"PlayButton.png"] forState:UIControlStateNormal];
+    [_playButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 - (void) setupSettingsButton{
-    _SettingsButton = [[UIButton alloc]initWithFrame:CGRectZero];
-    [_SettingsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_SettingsButton];
+    _settingsButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_settingsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_settingsButton];
     
-    [_SettingsButton addWidthConstraint:40];
-    [_SettingsButton addHeightConstraint:40];
-    [_SettingsButton addTrailingConstraint:MAIN_MENU_SMALL_BUTTONS_LEADING_SPACE];
-    [_SettingsButton addTopConstraint:15];
+    [_settingsButton addWidthConstraint:40];
+    [_settingsButton addHeightConstraint:40];
+    [_settingsButton addTrailingConstraint:MAIN_MENU_SMALL_BUTTONS_LEADING_SPACE];
+    [_settingsButton addTopConstraint:15];
     
-    [_SettingsButton setBackgroundImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
-    [_SettingsButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsButton setBackgroundImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
+    [_settingsButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) setupProfileButton{
-    _ProfileButton = [[UIButton alloc]initWithFrame:CGRectZero];
-    [_ProfileButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_ProfileButton];
+    _profileButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_profileButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_profileButton];
     
-    [_ProfileButton addWidthConstraint:40];
-    [_ProfileButton addHeightConstraint:40];
-    [_ProfileButton addLeadingConstraint:MAIN_MENU_SMALL_BUTTONS_LEADING_SPACE];
-    [_ProfileButton addTopConstraint:15];
+    [_profileButton addWidthConstraint:40];
+    [_profileButton addHeightConstraint:40];
+    [_profileButton addLeadingConstraint:MAIN_MENU_SMALL_BUTTONS_LEADING_SPACE];
+    [_profileButton addTopConstraint:15];
     
-    [_ProfileButton setBackgroundImage:[UIImage imageNamed:@"UserButton.png"] forState:UIControlStateNormal];
-    [_ProfileButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_profileButton setBackgroundImage:[UIImage imageNamed:@"UserButton.png"] forState:UIControlStateNormal];
+    [_profileButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
 -(void) setupUserDataView{
-    _UserData = [[UIView alloc]initWithFrame:CGRectZero];
-    [_UserData setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_UserData];
+    _userData = [[UIView alloc]initWithFrame:CGRectZero];
+    [_userData setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_userData];
     
-    [_UserData addWidthConstraint:USER_DATA_BAR_WIDTH];
-    [_UserData addHeightConstraint:40];
-    [_UserData addCenterXConstraint];
-    [_UserData addTopConstraint:15];
+    [_userData addWidthConstraint:USER_DATA_BAR_WIDTH];
+    [_userData addHeightConstraint:40];
+    [_userData addCenterXConstraint];
+    [_userData addTopConstraint:15];
     
-    [_UserData setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.9]];
-    [_UserData.layer setCornerRadius:3.0f];
+    [_userData setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.9]];
+    [_userData.layer setCornerRadius:3.0f];
     
 }
 
 -(void) setupUserName{
-    _UserName = [[UILabel alloc]initWithFrame:CGRectZero];
-    [_UserName setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_UserData addSubview:_UserName];
+    _userName = [[UILabel alloc]initWithFrame:CGRectZero];
+    [_userName setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_userData addSubview:_userName];
     
-    [_UserName addWidthConstraint:USER_DATA_BAR_WIDTH];
-    [_UserName addHeightConstraint:20];
-    [_UserName addCenterXConstraint];
-    [_UserName addTopConstraint:0];
+    [_userName addWidthConstraint:USER_DATA_BAR_WIDTH];
+    [_userName addHeightConstraint:20];
+    [_userName addCenterXConstraint];
+    [_userName addTopConstraint:0];
     
-    [_UserName setText:@"[undefined]"];
-    [_UserName setTextColor:[UIColor whiteColor]];
-    [_UserName setAdjustsFontSizeToFitWidth:YES];
-    [_UserName setTextAlignment:NSTextAlignmentCenter];
+    [_userName setText:@"[undefined]"];
+    [_userName setTextColor:[UIColor whiteColor]];
+    [_userName setAdjustsFontSizeToFitWidth:YES];
+    [_userName setTextAlignment:NSTextAlignmentCenter];
 }
 
--(void) setupCoins{
-    _CoinButton = [[UIButton alloc]initWithFrame:CGRectZero];
-    [_CoinButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_UserData addSubview:_CoinButton];
+-(void) setupCoins {
+    _coinButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_coinButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_userData addSubview:_coinButton];
     
-    [_CoinButton addWidthConstraint:20];
-    [_CoinButton addHeightConstraint:20];
-    [_CoinButton addTrailingConstraint:10];
-    [_CoinButton addBottomConstraint:2];
+    [_coinButton addWidthConstraint:20];
+    [_coinButton addHeightConstraint:20];
+    [_coinButton addTrailingConstraint:10];
+    [_coinButton addBottomConstraint:2];
     
-    [_CoinButton setBackgroundImage:[UIImage imageNamed:@"CoinIcon.png"] forState:UIControlStateNormal];
+    [_coinButton setBackgroundImage:[UIImage imageNamed:@"CoinIcon.png"] forState:UIControlStateNormal];
     
-    _CoinAmount = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_CoinAmount setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_UserData addSubview:_CoinAmount];
+    _coinAmount = [[UILabel alloc] initWithFrame:CGRectZero];
+    [_coinAmount setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_userData addSubview:_coinAmount];
     
-    [_CoinAmount addTrailingConstraint:32];
-    [_CoinAmount addHeightConstraint:20];
-    [_CoinAmount addLeadingConstraint:0];
-    [_CoinAmount addBottomConstraint:0];
+    [_coinAmount addTrailingConstraint:32];
+    [_coinAmount addHeightConstraint:20];
+    [_coinAmount addLeadingConstraint:0];
+    [_coinAmount addBottomConstraint:0];
     
-    [_CoinAmount setText:@"999,999"];
-    [_CoinAmount setTextColor:[UIColor whiteColor]];
-    [_CoinAmount setAdjustsFontSizeToFitWidth:YES];
-    [_CoinAmount setTextAlignment:NSTextAlignmentRight];
+    [_coinAmount setText:@"999,999"];
+    [_coinAmount setTextColor:[UIColor whiteColor]];
+    [_coinAmount setAdjustsFontSizeToFitWidth:YES];
+    [_coinAmount setTextAlignment:NSTextAlignmentRight];
 }
 
-- (void)buttonTapped
-{
+- (void)buttonTapped {
     //[_button setBackgroundColor:[UIColor yellowColor]];
     [self.delegate buttonTapped];
 }
-
-
 @end

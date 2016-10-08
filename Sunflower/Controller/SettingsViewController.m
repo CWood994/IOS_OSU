@@ -11,7 +11,7 @@
 
 @interface SettingsViewController ()<SettingsViewDelegate>{
     
-    SettingsView *_SettingsView;
+    SettingsView *_settingsView;
 }
 @end
 
@@ -24,9 +24,17 @@
 }
 
 - (void)loadView{
-    _SettingsView = [[SettingsView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _SettingsView.delegate = self;
-    [self setView:_SettingsView];
+    _settingsView = [[SettingsView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _settingsView.delegate = self;
+    [self setView:_settingsView];
+}
+
+- (void) viewDidLayoutSubviews {
+    //TODO: implement here:
+    // what happens when view
+    // call a method on the view like [_settingsView updateView]
+    // in SettingsView, create a method called updateView
+    // updateView is responsible for redrawing the view based on orientation or whatever.
 }
 
 - (void)didReceiveMemoryWarning {

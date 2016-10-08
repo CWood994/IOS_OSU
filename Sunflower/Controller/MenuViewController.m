@@ -18,7 +18,6 @@
 @end
 
 @implementation MenuViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -36,24 +35,21 @@
 }
 
 
-- (void)ViewWillAppear{
+- (void)viewWillAppear{
     
 }
 
--(void)ViewDidAppear{
+-(void)viewDidAppear{
     
 }
 
--(void)ViewWillDisappear{
+-(void)viewWillDisappear{
     
 }
 
--(void)ViewDidDisappear{
+-(void)viewDidDisappear{
     
 }
-
-
-
 
 - (void) buttonTapped{
     _vc = [[SettingsViewController alloc] init];
@@ -62,9 +58,6 @@
     _vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:_vc animated:NO completion:nil];
 }
-
-
-
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id)coordinator {
     
@@ -82,5 +75,4 @@
         
     }];
 }
-
 @end
