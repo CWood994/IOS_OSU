@@ -17,7 +17,8 @@
 @end
 
 @interface SettingsView(Private)
--(void)setupSettingsView;
+- (void)setupSettingsView;
+- (void) updateButtonWidthConstraint:(CGFloat)widthConstraint heightConstraint:(CGFloat)heightConstraint leadingConstraint:(CGFloat)leadingConstraing topConstraint:(CGFloat)topConstraint;
 @end
 
 @implementation SettingsView
@@ -33,16 +34,10 @@
     [_button removeConstraints:[_button constraints]];
     if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait) {
         //TODO: Just update these values , 200,100,100,300
-        [_button addWidthConstraint:200];
-        [_button addHeightConstraint:100];
-        [_button addLeadingConstraint:100];
-        [_button addTopConstraint:300];
+        [self updateButtonWidthConstraint:200 heightConstraint:100 leadingConstraint:100 topConstraint:300];
     } else {
         //TODO: Just update these values , 200,100,100,100
-        [_button addWidthConstraint:200];
-        [_button addHeightConstraint:100];
-        [_button addLeadingConstraint:100];
-        [_button addTopConstraint:100];
+        [self updateButtonWidthConstraint:200 heightConstraint:100 leadingConstraint:100 topConstraint:100];
     }
 }
 @end
@@ -90,5 +85,13 @@
 - (void)dismissSettings {
     [_button setBackgroundColor:[UIColor yellowColor]];
     [self.delegate buttonTapped];
+}
+
+- (void) updateButtonWidthConstraint:(CGFloat)widthConstraint heightConstraint:(CGFloat)heightConstraint leadingConstraint:(CGFloat)leadingConstraing topConstraint:(CGFloat)topConstraint {
+    [_button removeConstraints:[_button constraints]];
+    [_button addWidthConstraint:widthConstraint];
+    [_button addHeightConstraint:heightConstraint];
+    [_button addLeadingConstraint:leadingConstraing];
+    [_button addTopConstraint:topConstraint];
 }
 @end
