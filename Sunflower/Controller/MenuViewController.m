@@ -11,8 +11,8 @@
 #import "SettingsViewController.h"
 
 @interface MenuViewController ()<MenuViewDelegate>{
-
     MenuView *_menuView;
+    //TODO: wtf is this? _vc???? 
     SettingsViewController *_vc;
 }
 @end
@@ -33,7 +33,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (void)viewWillAppear{
     

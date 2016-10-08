@@ -9,8 +9,8 @@
 #import "SettingsView.h"
 #import "UIView+Autolayout.h"
 
-@interface SettingsView()
-{
+@interface SettingsView() {
+    //TODO: WTF IS THIS!!! _button ?!
     UIButton *_button;
     UIView *_background;
 }

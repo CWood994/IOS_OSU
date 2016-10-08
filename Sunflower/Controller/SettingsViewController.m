@@ -10,7 +10,6 @@
 #import "SettingsView.h"
 
 @interface SettingsViewController ()<SettingsViewDelegate>{
-    
     SettingsView *_settingsView;
 }
 @end

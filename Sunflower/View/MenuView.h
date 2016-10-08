@@ -15,5 +15,3 @@
 @interface MenuView : UIView
 @property (weak) id <MenuViewDelegate> delegate;
 @end
-
-

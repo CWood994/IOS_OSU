@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+//TODO: This Protocol is not necessary. Better way to do this.
+// you can just expose the button, and just set the target that way
 @protocol SettingsViewDelegate
 @required
 - (void)buttonTapped;

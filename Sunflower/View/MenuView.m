@@ -11,6 +11,9 @@
 #import "SunflowerCommon.h"
 
 @interface MenuView() {
+    //TODO: these are HORRIBLY named!!!
+    // if something is a View, this is how to name: _userDataView (notice the suffix View)
+    // if something is a label, this is how to name: _coinAmountLabel (notice the suffix Label)
     UIButton *_playButton;
     UIButton *_settingsButton;
     UIButton *_profileButton;
