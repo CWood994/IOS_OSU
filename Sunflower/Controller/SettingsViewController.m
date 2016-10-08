@@ -29,11 +29,13 @@
 }
 
 - (void) viewDidLayoutSubviews {
+    NSLog(@"Hello") ;
     //TODO: implement here:
     // what happens when view
     // call a method on the view like [_settingsView updateView]
     // in SettingsView, create a method called updateView
     // updateView is responsible for redrawing the view based on orientation or whatever.
+    [_settingsView updateView];
 }
 
 - (void)didReceiveMemoryWarning {

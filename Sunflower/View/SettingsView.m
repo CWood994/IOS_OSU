@@ -28,6 +28,23 @@
     }
     return self;
 }
+
+- (void) updateView {
+    [_button removeConstraints:[_button constraints]];
+    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait) {
+        //TODO: Just update these values , 200,100,100,300
+        [_button addWidthConstraint:200];
+        [_button addHeightConstraint:100];
+        [_button addLeadingConstraint:100];
+        [_button addTopConstraint:300];
+    } else {
+        //TODO: Just update these values , 200,100,100,100
+        [_button addWidthConstraint:200];
+        [_button addHeightConstraint:100];
+        [_button addLeadingConstraint:100];
+        [_button addTopConstraint:100];
+    }
+}
 @end
 
 @implementation SettingsView(Private)
@@ -38,9 +55,14 @@
 }
 
 - (void) setupBackground{
-    _background = [[UIView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    _background = [[UIView alloc]initWithFrame:CGRectZero];
     [_background setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:_background];
+    
+    [_background addTopConstraint:0];
+    [_background addBottomConstraint:0];
+    [_background addLeadingConstraint:0];
+    [_background addTrailingConstraint:0];
     
     [_background setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.85]];
     UILongPressGestureRecognizer *singleFingerTap =

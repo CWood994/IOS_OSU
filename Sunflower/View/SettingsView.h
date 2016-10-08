@@ -16,4 +16,5 @@
 
 @interface SettingsView : UIView
 @property (weak) id <SettingsViewDelegate> delegate;
+- (void) updateView;
 @end
