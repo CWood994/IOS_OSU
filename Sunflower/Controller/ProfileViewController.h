@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  ProfileViewController.h
 //  sunflower
 //
 //  Created by Connor Wood on 10/1/16.
@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface ProfileViewController : UIViewController
 @end

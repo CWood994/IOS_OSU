@@ -11,17 +11,11 @@
 #import "SunflowerCommon.h"
 
 @interface MenuView() {
-    //TODO: these are HORRIBLY named!!!
-    // if something is a View, this is how to name: _userDataView (notice the suffix View)
-    // if something is a label, this is how to name: _coinAmountLabel (notice the suffix Label)
-    UIButton *_playButton;
-    UIButton *_settingsButton;
-    UIButton *_profileButton;
     UIButton *_levelButton;
     UIButton *_coinButton;
-    UIView *_userData;
-    UILabel *_userName;
-    UILabel *_coinAmount;
+    UIView *_userDataView;
+    UILabel *_userNameLabel;
+    UILabel *_coinAmountLabel;
 }
 @end
 
@@ -30,6 +24,11 @@
 @end
 
 @implementation MenuView
+
+@synthesize playButton=_playButton;
+@synthesize settingsButton=_settingsButton;
+@synthesize profileButton=_profileButton;
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -37,6 +36,8 @@
     }
     return self;
 }
+
+
 @end
 
 @implementation MenuView(Private)
@@ -61,8 +62,6 @@
     [_playButton addBottomConstraint:PLAY_BUTTON_BOTTOM_HEIGHT];
     
     [_playButton setBackgroundImage:[UIImage imageNamed:@"PlayButton.png"] forState:UIControlStateNormal];
-    [_playButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void) setupSettingsButton{
@@ -76,7 +75,6 @@
     [_settingsButton addTopConstraint:15];
     
     [_settingsButton setBackgroundImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
-    [_settingsButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) setupProfileButton{
@@ -90,45 +88,42 @@
     [_profileButton addTopConstraint:15];
     
     [_profileButton setBackgroundImage:[UIImage imageNamed:@"UserButton.png"] forState:UIControlStateNormal];
-    [_profileButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 -(void) setupUserDataView{
-    _userData = [[UIView alloc]initWithFrame:CGRectZero];
-    [_userData setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_userData];
+    _userDataView = [[UIView alloc]initWithFrame:CGRectZero];
+    [_userDataView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_userDataView];
     
-    [_userData addWidthConstraint:USER_DATA_BAR_WIDTH];
-    [_userData addHeightConstraint:40];
-    [_userData addCenterXConstraint];
-    [_userData addTopConstraint:15];
+    [_userDataView addWidthConstraint:USER_DATA_BAR_WIDTH];
+    [_userDataView addHeightConstraint:40];
+    [_userDataView addCenterXConstraint];
+    [_userDataView addTopConstraint:15];
     
-    [_userData setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.9]];
-    [_userData.layer setCornerRadius:3.0f];
-    
+    [_userDataView setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.9]];
+    [_userDataView.layer setCornerRadius:3.0f];
 }
 
 -(void) setupUserName{
-    _userName = [[UILabel alloc]initWithFrame:CGRectZero];
-    [_userName setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_userData addSubview:_userName];
+    _userNameLabel = [[UILabel alloc]initWithFrame:CGRectZero];
+    [_userNameLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_userDataView addSubview:_userNameLabel];
     
-    [_userName addWidthConstraint:USER_DATA_BAR_WIDTH];
-    [_userName addHeightConstraint:20];
-    [_userName addCenterXConstraint];
-    [_userName addTopConstraint:0];
+    [_userNameLabel addWidthConstraint:USER_DATA_BAR_WIDTH];
+    [_userNameLabel addHeightConstraint:20];
+    [_userNameLabel addCenterXConstraint];
+    [_userNameLabel addTopConstraint:0];
     
-    [_userName setText:@"[undefined]"];
-    [_userName setTextColor:[UIColor whiteColor]];
-    [_userName setAdjustsFontSizeToFitWidth:YES];
-    [_userName setTextAlignment:NSTextAlignmentCenter];
+    [_userNameLabel setText:@"[undefined]"];
+    [_userNameLabel setTextColor:[UIColor whiteColor]];
+    [_userNameLabel setAdjustsFontSizeToFitWidth:YES];
+    [_userNameLabel setTextAlignment:NSTextAlignmentCenter];
 }
 
 -(void) setupCoins {
     _coinButton = [[UIButton alloc]initWithFrame:CGRectZero];
     [_coinButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_userData addSubview:_coinButton];
+    [_userDataView addSubview:_coinButton];
     
     [_coinButton addWidthConstraint:20];
     [_coinButton addHeightConstraint:20];
@@ -137,23 +132,19 @@
     
     [_coinButton setBackgroundImage:[UIImage imageNamed:@"CoinIcon.png"] forState:UIControlStateNormal];
     
-    _coinAmount = [[UILabel alloc] initWithFrame:CGRectZero];
-    [_coinAmount setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_userData addSubview:_coinAmount];
+    _coinAmountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    [_coinAmountLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_userDataView addSubview:_coinAmountLabel];
     
-    [_coinAmount addTrailingConstraint:32];
-    [_coinAmount addHeightConstraint:20];
-    [_coinAmount addLeadingConstraint:0];
-    [_coinAmount addBottomConstraint:0];
+    [_coinAmountLabel addTrailingConstraint:32];
+    [_coinAmountLabel addHeightConstraint:20];
+    [_coinAmountLabel addLeadingConstraint:0];
+    [_coinAmountLabel addBottomConstraint:0];
     
-    [_coinAmount setText:@"999,999"];
-    [_coinAmount setTextColor:[UIColor whiteColor]];
-    [_coinAmount setAdjustsFontSizeToFitWidth:YES];
-    [_coinAmount setTextAlignment:NSTextAlignmentRight];
+    [_coinAmountLabel setText:@"999,999"];
+    [_coinAmountLabel setTextColor:[UIColor whiteColor]];
+    [_coinAmountLabel setAdjustsFontSizeToFitWidth:YES];
+    [_coinAmountLabel setTextAlignment:NSTextAlignmentRight];
 }
 
-- (void)buttonTapped {
-    //[_button setBackgroundColor:[UIColor yellowColor]];
-    [self.delegate buttonTapped];
-}
 @end

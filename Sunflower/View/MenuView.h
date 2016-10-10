@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol MenuViewDelegate
-@required
-- (void)buttonTapped;
-@end
 
 @interface MenuView : UIView
-@property (weak) id <MenuViewDelegate> delegate;
+@property (strong, nonatomic) UIButton *playButton;
+@property (strong, nonatomic) UIButton *settingsButton;
+@property (strong, nonatomic) UIButton *profileButton;
+
 @end

@@ -10,9 +10,9 @@
 #import "UIView+Autolayout.h"
 
 @interface SettingsView() {
-    //TODO: WTF IS THIS!!! _button ?!
-    UIButton *_button;
-    UIView *_background;
+    UIView *_menuBackgroundOutter;
+    UIView *_menuBackgroundInnner;
+    UILabel *_SettingsTitle;
 }
 @end
 
@@ -21,6 +21,10 @@
 @end
 
 @implementation SettingsView
+
+@synthesize exitButton = _exitButton;
+@synthesize background = _background;
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -28,45 +32,93 @@
     }
     return self;
 }
+
 @end
 
 @implementation SettingsView(Private)
 - (void) setupSettingsView{
     [self setBackgroundColor:[UIColor clearColor]];
     [self setupBackground];
+    [self setupMenuOutter];
+    [self setupMenuInner];
     [self setupButton];
+    [self setupTitle];
 }
 
 - (void) setupBackground{
-    _background = [[UIView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    _background = [[UIView alloc]initWithFrame:CGRectZero];
     [_background setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:_background];
     
-    [_background setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.85]];
-    UILongPressGestureRecognizer *singleFingerTap =
-    [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(dismissSettings)];
-    singleFingerTap.minimumPressDuration=0;
-    [_background addGestureRecognizer:singleFingerTap];
+    [_background addTopConstraint:0];
+    [_background addBottomConstraint:0];
+    [_background addLeadingConstraint:0];
+    [_background addTrailingConstraint:0];
     
+    [_background setBackgroundColor:[UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:0.8]];
+}
+
+- (void) setupMenuOutter{
+    _menuBackgroundOutter = [[UIView alloc]initWithFrame:CGRectZero];
+    [_menuBackgroundOutter setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_menuBackgroundOutter];
+    
+    [_menuBackgroundOutter addTopConstraint:30];
+    [_menuBackgroundOutter addBottomConstraint:30];
+    [_menuBackgroundOutter addLeadingConstraint:30];
+    [_menuBackgroundOutter addTrailingConstraint:30];
+    
+    [_menuBackgroundOutter.layer setCornerRadius:30];
+    [_menuBackgroundOutter.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_menuBackgroundOutter.layer setBorderWidth:2];
+    [_menuBackgroundOutter setBackgroundColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1]];
+}
+
+- (void) setupMenuInner{
+    _menuBackgroundInnner = [[UIView alloc]initWithFrame:CGRectZero];
+    [_menuBackgroundInnner setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_menuBackgroundInnner];
+    
+    [_menuBackgroundInnner addTopConstraint:50];
+    [_menuBackgroundInnner addBottomConstraint:10];
+    [_menuBackgroundInnner addLeadingConstraint:12];
+    [_menuBackgroundInnner addTrailingConstraint:12];
+    
+    [_menuBackgroundInnner.layer setCornerRadius:30];
+    [_menuBackgroundInnner.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_menuBackgroundInnner.layer setBorderWidth:2];
+    [_menuBackgroundInnner setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+}
+
+- (void) setupTitle{
+    _SettingsTitle = [[UILabel alloc] initWithFrame:CGRectZero];
+    [_SettingsTitle setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_SettingsTitle];
+    
+    [_SettingsTitle addWidthConstraint:200];
+    [_SettingsTitle addHeightConstraint:50];
+    [_SettingsTitle addCenterXConstraint];
+    [_SettingsTitle addTopConstraint:2];
+    
+    [_SettingsTitle setText:@"Settings"];
+    [_SettingsTitle setTextColor:[UIColor whiteColor]];
+    [_SettingsTitle setAdjustsFontSizeToFitWidth:YES];
+    [_SettingsTitle setFont:[UIFont boldSystemFontOfSize:30]];
+    [_SettingsTitle setTextAlignment:NSTextAlignmentCenter];
 }
 
 - (void) setupButton{
-    _button = [[UIButton alloc]initWithFrame:CGRectZero];
-    [_button setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addSubview:_button];
+    _exitButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_exitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_exitButton];
     
-    [_button addWidthConstraint:200];
-    [_button addHeightConstraint:100];
-    [_button addLeadingConstraint:100];
-    [_button addTopConstraint:300];
+    [_exitButton addWidthConstraint:30];
+    [_exitButton addHeightConstraint:30];
+    [_exitButton addTopConstraint:10];
+    [_exitButton addTrailingConstraint:10];
+
     
-    [_button setBackgroundColor:[UIColor blueColor]];
-    [_button addTarget:self action:@selector(dismissSettings) forControlEvents:UIControlEventTouchUpInside];
+    [_exitButton setBackgroundImage:[UIImage imageNamed:@"CloseButton.png"] forState:UIControlStateNormal];
 }
 
-- (void)dismissSettings {
-    [_button setBackgroundColor:[UIColor yellowColor]];
-    [self.delegate buttonTapped];
-}
 @end

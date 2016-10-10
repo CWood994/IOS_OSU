@@ -1,20 +1,20 @@
 //
-//  SettingsViewController.m
+//  ProfileViewController.m
 //  sunflower
 //
 //  Created by Connor Wood on 10/1/16.
 //  Copyright © 2016 Connor Wood. All rights reserved.
 //
 
-#import "SettingsViewController.h"
-#import "SettingsView.h"
+#import "ProfileViewController.h"
+#import "ProfileView.h"
 
-@interface SettingsViewController (){
-    SettingsView *_settingsView;
+@interface ProfileViewController (){
+    ProfileView *_profileView;
 }
 @end
 
-@implementation SettingsViewController
+@implementation ProfileViewController
 
 
 - (void)viewDidLoad {
@@ -27,16 +27,16 @@
 - (void)loadView{
     NSLog(@"\n**** loadView: %@ ****\n",self.class);
 
-    _settingsView = [[SettingsView alloc] initWithFrame:CGRectZero];
-    [_settingsView.exitButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    _profileView = [[ProfileView alloc] initWithFrame:CGRectZero];
+    [_profileView.exitButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
     UILongPressGestureRecognizer *singleFingerTap =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                   action:@selector(buttonTapped)];
     singleFingerTap.minimumPressDuration=0;
-    [_settingsView.background addGestureRecognizer:singleFingerTap];
+    [_profileView.background addGestureRecognizer:singleFingerTap];
 
     
-    [self setView:_settingsView];
+    [self setView:_profileView];
 }
 
 - (void)didReceiveMemoryWarning {

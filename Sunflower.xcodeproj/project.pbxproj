@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		285EAE751DABF843006DE5E6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE741DABF843006DE5E6 /* ProfileView.m */; };
+		285EAE761DABF843006DE5E6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE741DABF843006DE5E6 /* ProfileView.m */; };
+		285EAE791DABF9AC006DE5E6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE781DABF9AC006DE5E6 /* ProfileViewController.m */; };
+		285EAE7A1DABF9AC006DE5E6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE781DABF9AC006DE5E6 /* ProfileViewController.m */; };
 		286659CF1DA7473500FF3829 /* SunflowerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 286659CE1DA7473500FF3829 /* SunflowerTests.m */; };
 		28665A111DA74AF300FF3829 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28665A011DA74AF300FF3829 /* MenuViewController.m */; };
 		28665A121DA74AF300FF3829 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28665A011DA74AF300FF3829 /* MenuViewController.m */; };
@@ -55,6 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		285EAE731DABF843006DE5E6 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		285EAE741DABF843006DE5E6 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		285EAE771DABF9AC006DE5E6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		285EAE781DABF9AC006DE5E6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		286659B11DA7473500FF3829 /* Sunflower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sunflower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		286659CA1DA7473500FF3829 /* SunflowerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SunflowerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		286659CE1DA7473500FF3829 /* SunflowerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SunflowerTests.m; sourceTree = "<group>"; };
@@ -147,6 +155,8 @@
 			children = (
 				28665A001DA74AF300FF3829 /* MenuViewController.h */,
 				28665A011DA74AF300FF3829 /* MenuViewController.m */,
+				285EAE771DABF9AC006DE5E6 /* ProfileViewController.h */,
+				285EAE781DABF9AC006DE5E6 /* ProfileViewController.m */,
 				28665A021DA74AF300FF3829 /* SettingsViewController.h */,
 				28665A031DA74AF300FF3829 /* SettingsViewController.m */,
 			);
@@ -182,6 +192,8 @@
 				28665A0E1DA74AF300FF3829 /* MenuView.m */,
 				28665A0F1DA74AF300FF3829 /* SettingsView.h */,
 				28665A101DA74AF300FF3829 /* SettingsView.m */,
+				285EAE731DABF843006DE5E6 /* ProfileView.h */,
+				285EAE741DABF843006DE5E6 /* ProfileView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,9 +337,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				28665A1B1DA74AF300FF3829 /* UIView+Autolayout.m in Sources */,
+				285EAE791DABF9AC006DE5E6 /* ProfileViewController.m in Sources */,
 				28665A1D1DA74AF300FF3829 /* MenuView.m in Sources */,
 				28665A151DA74AF300FF3829 /* AppDelegate.m in Sources */,
 				28665A131DA74AF300FF3829 /* SettingsViewController.m in Sources */,
+				285EAE751DABF843006DE5E6 /* ProfileView.m in Sources */,
 				28665A191DA74AF300FF3829 /* main.m in Sources */,
 				28665A111DA74AF300FF3829 /* MenuViewController.m in Sources */,
 				28665A1F1DA74AF300FF3829 /* SettingsView.m in Sources */,
@@ -342,6 +356,8 @@
 				28665A161DA74AF300FF3829 /* AppDelegate.m in Sources */,
 				28665A141DA74AF300FF3829 /* SettingsViewController.m in Sources */,
 				286659CF1DA7473500FF3829 /* SunflowerTests.m in Sources */,
+				285EAE7A1DABF9AC006DE5E6 /* ProfileViewController.m in Sources */,
+				285EAE761DABF843006DE5E6 /* ProfileView.m in Sources */,
 				28665A121DA74AF300FF3829 /* MenuViewController.m in Sources */,
 				28665A201DA74AF300FF3829 /* SettingsView.m in Sources */,
 				28665A1C1DA74AF300FF3829 /* UIView+Autolayout.m in Sources */,
