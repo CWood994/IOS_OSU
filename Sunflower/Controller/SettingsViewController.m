@@ -8,9 +8,11 @@
 
 #import "SettingsViewController.h"
 #import "SettingsView.h"
+#import "CreditsViewController.h"
 
 @interface SettingsViewController (){
     SettingsView *_settingsView;
+    CreditsViewController *_creditsViewController;
 }
 @end
 
@@ -28,12 +30,13 @@
     NSLog(@"\n**** loadView: %@ ****\n",self.class);
 
     _settingsView = [[SettingsView alloc] initWithFrame:CGRectZero];
-    [_settingsView.exitButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.exitButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
     UILongPressGestureRecognizer *singleFingerTap =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                  action:@selector(buttonTapped)];
+                                                  action:@selector(dismissViewController)];
     singleFingerTap.minimumPressDuration=0;
     [_settingsView.background addGestureRecognizer:singleFingerTap];
+    [_settingsView.creditsButton addTarget:self action:@selector(creditsButtonTapped) forControlEvents:UIControlEventTouchUpInside];
 
     
     [self setView:_settingsView];
@@ -92,7 +95,12 @@
     }];
 }
 
-- (void) buttonTapped{
+- (void) dismissViewController{
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+-(void)creditsButtonTapped{
+    _creditsViewController = [[CreditsViewController alloc]init];
+    [self presentViewController: _creditsViewController animated:YES completion: nil];
 }
 @end

@@ -24,6 +24,14 @@
 
 @synthesize exitButton = _exitButton;
 @synthesize background = _background;
+@synthesize creditsButton = _creditsButton;
+@synthesize signOutButton = _signOutButton;
+@synthesize gameSettingsButton = _gameSettingsButton;
+@synthesize tbdButton = _tbdButton;
+@synthesize quitButton = _quitButton;
+@synthesize muteButton = _muteButton;
+
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -40,9 +48,16 @@
     [self setBackgroundColor:[UIColor clearColor]];
     [self setupBackground];
     [self setupMenuOutter];
-    [self setupMenuInner];
-    [self setupButton];
+    //[self setupMenuInner];
+    [self setupExitButton];
     [self setupTitle];
+    [self setupCreditsButton];
+    [self setupSignOutButton];
+    [self setupGameSettingsButton];
+    [self setupTBDButton];
+    [self setupMuteButton];
+    [self setupQuitButton];
+
 }
 
 - (void) setupBackground{
@@ -88,6 +103,7 @@
     [_menuBackgroundInnner.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
     [_menuBackgroundInnner.layer setBorderWidth:2];
     [_menuBackgroundInnner setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    
 }
 
 - (void) setupTitle{
@@ -107,7 +123,7 @@
     [_SettingsTitle setTextAlignment:NSTextAlignmentCenter];
 }
 
-- (void) setupButton{
+- (void) setupExitButton{
     _exitButton = [[UIButton alloc]initWithFrame:CGRectZero];
     [_exitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_menuBackgroundOutter addSubview:_exitButton];
@@ -117,8 +133,121 @@
     [_exitButton addTopConstraint:10];
     [_exitButton addTrailingConstraint:10];
 
-    
     [_exitButton setBackgroundImage:[UIImage imageNamed:@"CloseButton.png"] forState:UIControlStateNormal];
+}
+
+- (void) setupCreditsButton{
+    _creditsButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_creditsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_creditsButton];
+    
+    [_creditsButton addLeadingConstraint:12];
+    [_creditsButton addHeightConstraint:80];
+    [_creditsButton addTopConstraint:50];
+    [_creditsButton addTrailingConstraint:12];
+    
+    [_creditsButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [_creditsButton.layer setCornerRadius:10];
+    [_creditsButton.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_creditsButton.layer setBorderWidth:2];
+    [_creditsButton setTitle:@"Credits" forState:UIControlStateNormal];
+    [_creditsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _creditsButton.titleLabel.font = [UIFont systemFontOfSize:30];
+}
+
+- (void) setupSignOutButton{
+    _signOutButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_signOutButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_signOutButton];
+    
+    [_signOutButton addLeadingConstraint:12];
+    [_signOutButton addHeightConstraint:80];
+    [_signOutButton addTopConstraint:326];
+    [_signOutButton addTrailingConstraint:12];
+    
+    [_signOutButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [_signOutButton.layer setCornerRadius:10];
+    [_signOutButton.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_signOutButton.layer setBorderWidth:2];
+    [_signOutButton setTitle:@"Sign Out" forState:UIControlStateNormal];
+    [_signOutButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _signOutButton.titleLabel.font = [UIFont systemFontOfSize:30];
+}
+
+- (void) setupGameSettingsButton{
+    _gameSettingsButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_gameSettingsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_gameSettingsButton];
+    
+    [_gameSettingsButton addLeadingConstraint:12];
+    [_gameSettingsButton addHeightConstraint:80];
+    [_gameSettingsButton addTopConstraint:234];
+    [_gameSettingsButton addTrailingConstraint:12];
+    
+    [_gameSettingsButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [_gameSettingsButton.layer setCornerRadius:10];
+    [_gameSettingsButton.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_gameSettingsButton.layer setBorderWidth:2];
+    [_gameSettingsButton setTitle:@"Game Settings" forState:UIControlStateNormal];
+    [_gameSettingsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _gameSettingsButton.titleLabel.font = [UIFont systemFontOfSize:30];
+}
+
+- (void) setupTBDButton{
+    _tbdButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_tbdButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_tbdButton];
+    
+    [_tbdButton addLeadingConstraint:12];
+    [_tbdButton addHeightConstraint:80];
+    [_tbdButton addTopConstraint:142];
+    [_tbdButton addTrailingConstraint:12];
+    
+    [_tbdButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [_tbdButton.layer setCornerRadius:10];
+    [_tbdButton.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_tbdButton.layer setBorderWidth:2];
+    [_tbdButton setTitle:@"TBD" forState:UIControlStateNormal];
+    [_tbdButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _tbdButton.titleLabel.font = [UIFont systemFontOfSize:30];
+}
+
+- (void) setupMuteButton{
+    _muteButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_muteButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_muteButton];
+    
+    [_muteButton addLeadingConstraint:12];
+    [_muteButton addHeightConstraint:80];
+    [_muteButton addTopConstraint:418];
+    [_muteButton addWidthConstraint:100];
+    
+    [_muteButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [_muteButton.layer setCornerRadius:10];
+    [_muteButton.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_muteButton.layer setBorderWidth:2];
+    [_muteButton setTitle:@"Mute" forState:UIControlStateNormal];
+    [_muteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _muteButton.titleLabel.font = [UIFont systemFontOfSize:25];
+}
+
+- (void) setupQuitButton{
+    _quitButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_quitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [_menuBackgroundOutter addSubview:_quitButton];
+    
+    [_quitButton addWidthConstraint:100];
+    [_quitButton addHeightConstraint:80];
+    [_quitButton addTopConstraint:418];
+    [_quitButton addTrailingConstraint:12];
+    
+    [_quitButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    [_quitButton.layer setCornerRadius:10];
+    [_quitButton.layer setBorderColor:[UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1].CGColor];
+    [_quitButton.layer setBorderWidth:2];
+    [_quitButton setTitle:@"Quit" forState:UIControlStateNormal];
+    [_quitButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _quitButton.titleLabel.font = [UIFont systemFontOfSize:25];
 }
 
 @end

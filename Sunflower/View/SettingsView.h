@@ -10,5 +10,11 @@
 
 @interface SettingsView : UIView
 @property (strong, nonatomic) UIButton *exitButton;
-@property (strong, nonatomic) UIView *background; //TODO: generic names, will change later
+@property (strong, nonatomic) UIButton *creditsButton;
+@property (strong, nonatomic) UIButton *signOutButton;
+@property (strong, nonatomic) UIButton *gameSettingsButton;
+@property (strong, nonatomic) UIButton *tbdButton;
+@property (strong, nonatomic) UIButton *muteButton;
+@property (strong, nonatomic) UIButton *quitButton;
+@property (strong, nonatomic) UIView *background;
 @end

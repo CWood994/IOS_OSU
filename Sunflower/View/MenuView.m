@@ -46,6 +46,7 @@
     [self setupPlayButton];
     [self setupProfileButton];
     [self setupSettingsButton];
+    [self setupLevelButton];
     [self setupUserDataView];
     [self setupUserName];
     [self setupCoins];
@@ -88,6 +89,20 @@
     [_profileButton addTopConstraint:15];
     
     [_profileButton setBackgroundImage:[UIImage imageNamed:@"UserButton.png"] forState:UIControlStateNormal];
+}
+
+//Possible change level (environment) button? or image? need something
+- (void) setupLevelButton{
+    _levelButton = [[UIButton alloc]initWithFrame:CGRectZero];
+    [_levelButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addSubview:_levelButton];
+    
+    [_levelButton addTrailingConstraint:50];
+    [_levelButton addTopConstraint:100];
+    [_levelButton addLeadingConstraint:50];
+    [_levelButton addBottomConstraint:170];
+    
+    [_levelButton setBackgroundImage:[UIImage imageNamed:@"LevelImage.png"] forState:UIControlStateNormal];
 }
 
 -(void) setupUserDataView{
