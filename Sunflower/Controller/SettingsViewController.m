@@ -47,9 +47,11 @@
     [_settingsView.signOutButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
     [_settingsView.signOutButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
     [_settingsView.signOutButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.signOutButton addTarget:self action:@selector(signOutButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [_settingsView.quitButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
     [_settingsView.quitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
     [_settingsView.quitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.quitButton addTarget:self action:@selector(quitButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     [_settingsView.muteButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
     [_settingsView.muteButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
     [_settingsView.muteButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
@@ -70,23 +72,23 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewWillAppear{
+- (void)viewWillAppear:(BOOL)animated{
     NSLog(@"\n**** viewWillAppear: %@ ****\n",self.class);
     
 }
 
--(void)viewDidAppear{
+-(void)viewDidAppear:(BOOL)animated{
     NSLog(@"\n**** viewDidAppear: %@ ****\n",self.class);
     
     
 }
 
--(void)viewWillDisappear{
+-(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"\n**** viewWillDisappear: %@ ****\n",self.class);
     
 }
 
--(void)viewDidDisappear{
+-(void)viewDidDisappear:(BOOL)animated{
     NSLog(@"\n**** viewDidDisappear: %@ ****\n",self.class);
     
     
@@ -149,6 +151,37 @@
 
 - (void)darkenBackground{
     [ _settingsView.background setBackgroundColor: [UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:0.8]];
-    
+}
+
+- (void) signOutButtonTapped
+{
+    [self.delegate signOutButtonTapped];
+}
+
+-(void)quitButtonTapped
+{
+    //show confirmation message to user
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Confirmation"
+                                                    message:@"Do you want to exit?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"OK", nil];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != 0)  // 0 == the cancel button
+    {
+        //home button press programmatically
+        UIApplication *app = [UIApplication sharedApplication];
+        [app performSelector:@selector(suspend)];
+        
+        //wait 2 seconds while app is going background
+        [NSThread sleepForTimeInterval:2.0];
+        
+        //exit app when app is in background
+        exit(0);
+    }
 }
 @end

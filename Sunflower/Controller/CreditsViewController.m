@@ -37,23 +37,23 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewWillAppear{
+- (void)viewWillAppear:(BOOL)animated{
     NSLog(@"\n**** viewWillAppear: %@ ****\n",self.class);
 
 }
 
--(void)viewDidAppear{
+-(void)viewDidAppear:(BOOL)animated{
     NSLog(@"\n**** viewDidAppear: %@ ****\n",self.class);
 
     
 }
 
--(void)viewWillDisappear{
+-(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"\n**** viewWillDisappear: %@ ****\n",self.class);
 
 }
 
--(void)viewDidDisappear{
+-(void)viewDidDisappear:(BOOL)animated{
     NSLog(@"\n**** viewDidDisappear: %@ ****\n",self.class);
 
     

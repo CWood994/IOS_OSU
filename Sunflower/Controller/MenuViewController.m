@@ -11,7 +11,7 @@
 #import "SettingsViewController.h"
 #import "ProfileViewController.h"
 
-@interface MenuViewController (){
+@interface MenuViewController ()<SettingsViewControllerDelegate>{
     MenuView *_MenuView;
     SettingsViewController *_SettingsViewController;
     ProfileViewController *_ProfileViewController;
@@ -53,23 +53,23 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)viewWillAppear{
+- (void) viewWillAppear:(BOOL)animated{
     NSLog(@"\n**** viewWillAppear: %@ ****\n",self.class);
 
 }
 
--(void)viewDidAppear{
+-(void)viewDidAppear:(BOOL)animated{
     NSLog(@"\n**** viewDidAppear: %@ ****\n",self.class);
 
     
 }
 
--(void)viewWillDisappear{
+-(void)viewWillDisappear:(BOOL)animated{
     NSLog(@"\n**** viewWillDisappear: %@ ****\n",self.class);
 
 }
 
--(void)viewDidDisappear{
+-(void)viewDidDisappear:(BOOL)animated{
     NSLog(@"\n**** viewDidDisappear: %@ ****\n",self.class);
 
     
@@ -83,6 +83,7 @@
 
 - (void) settingsButtonTapped{
     _SettingsViewController = [[SettingsViewController alloc] init];
+    _SettingsViewController.delegate = self;
     
     self.definesPresentationContext = YES;
     _SettingsViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -187,5 +188,15 @@
     } completion:^(id  _Nonnull context) {
         
     }];
+}
+
+-(void) signOutButtonTapped{
+    CATransition* transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionReveal;
+    transition.subtype = kCATransitionFromBottom;
+    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 @end

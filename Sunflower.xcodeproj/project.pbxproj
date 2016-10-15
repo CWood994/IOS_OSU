@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284E433E1DB1B8E400E354B8 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E433D1DB1B8E400E354B8 /* LoginView.m */; };
+		284E433F1DB1B8E400E354B8 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E433D1DB1B8E400E354B8 /* LoginView.m */; };
+		284E43421DB1B96700E354B8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E43411DB1B96700E354B8 /* LoginViewController.m */; };
+		284E43431DB1B96700E354B8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E43411DB1B96700E354B8 /* LoginViewController.m */; };
 		285EAE751DABF843006DE5E6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE741DABF843006DE5E6 /* ProfileView.m */; };
 		285EAE761DABF843006DE5E6 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE741DABF843006DE5E6 /* ProfileView.m */; };
 		285EAE791DABF9AC006DE5E6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 285EAE781DABF9AC006DE5E6 /* ProfileViewController.m */; };
@@ -63,6 +67,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284E433C1DB1B8E400E354B8 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		284E433D1DB1B8E400E354B8 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		284E43401DB1B96700E354B8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		284E43411DB1B96700E354B8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		285EAE731DABF843006DE5E6 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
 		285EAE741DABF843006DE5E6 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		285EAE771DABF9AC006DE5E6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -169,6 +177,8 @@
 				285EAE781DABF9AC006DE5E6 /* ProfileViewController.m */,
 				28665A021DA74AF300FF3829 /* SettingsViewController.h */,
 				28665A031DA74AF300FF3829 /* SettingsViewController.m */,
+				284E43401DB1B96700E354B8 /* LoginViewController.h */,
+				284E43411DB1B96700E354B8 /* LoginViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,6 +216,8 @@
 				28665A101DA74AF300FF3829 /* SettingsView.m */,
 				285EAE731DABF843006DE5E6 /* ProfileView.h */,
 				285EAE741DABF843006DE5E6 /* ProfileView.m */,
+				284E433C1DB1B8E400E354B8 /* LoginView.h */,
+				284E433D1DB1B8E400E354B8 /* LoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,10 +362,12 @@
 			files = (
 				28665A1B1DA74AF300FF3829 /* UIView+Autolayout.m in Sources */,
 				285EAE7D1DAC4D1A006DE5E6 /* CreditsViewController.m in Sources */,
+				284E43421DB1B96700E354B8 /* LoginViewController.m in Sources */,
 				285EAE791DABF9AC006DE5E6 /* ProfileViewController.m in Sources */,
 				28665A1D1DA74AF300FF3829 /* MenuView.m in Sources */,
 				28665A151DA74AF300FF3829 /* AppDelegate.m in Sources */,
 				28665A131DA74AF300FF3829 /* SettingsViewController.m in Sources */,
+				284E433E1DB1B8E400E354B8 /* LoginView.m in Sources */,
 				285EAE751DABF843006DE5E6 /* ProfileView.m in Sources */,
 				28665A191DA74AF300FF3829 /* main.m in Sources */,
 				285EAE811DAC4D92006DE5E6 /* CreditsView.m in Sources */,
@@ -370,6 +384,7 @@
 				285EAE821DAC4D92006DE5E6 /* CreditsView.m in Sources */,
 				28665A161DA74AF300FF3829 /* AppDelegate.m in Sources */,
 				28665A141DA74AF300FF3829 /* SettingsViewController.m in Sources */,
+				284E43431DB1B96700E354B8 /* LoginViewController.m in Sources */,
 				286659CF1DA7473500FF3829 /* SunflowerTests.m in Sources */,
 				285EAE7A1DABF9AC006DE5E6 /* ProfileViewController.m in Sources */,
 				285EAE7E1DAC4D1A006DE5E6 /* CreditsViewController.m in Sources */,
@@ -377,6 +392,7 @@
 				28665A121DA74AF300FF3829 /* MenuViewController.m in Sources */,
 				28665A201DA74AF300FF3829 /* SettingsView.m in Sources */,
 				28665A1C1DA74AF300FF3829 /* UIView+Autolayout.m in Sources */,
+				284E433F1DB1B8E400E354B8 /* LoginView.m in Sources */,
 				28665A1E1DA74AF300FF3829 /* MenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

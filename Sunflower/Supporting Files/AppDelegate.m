@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MenuViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate (){
 }
@@ -21,7 +21,7 @@
     
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-     MenuViewController* vc = [[MenuViewController alloc]init];
+     LoginViewController* vc = [[LoginViewController alloc]init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:vc];
     navController.navigationBar.hidden = YES;
     self.window.rootViewController = navController;

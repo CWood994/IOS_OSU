@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SettingsViewControllerDelegate
+@required
+-(void)signOutButtonTapped;
+@end
+
 @interface SettingsViewController : UIViewController
+@property (weak) id <SettingsViewControllerDelegate> delegate;
+
 -(void) darkenBackground;
 @end
