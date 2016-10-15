@@ -28,10 +28,14 @@
     NSLog(@"\n**** loadView: %@ ****\n",self.class);
 
     _profileView = [[ProfileView alloc] initWithFrame:CGRectZero];
-    [_profileView.exitButton addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_profileView.exitButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
+    [_profileView.exitButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_profileView.exitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_profileView.exitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+
     UILongPressGestureRecognizer *singleFingerTap =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                  action:@selector(buttonTapped)];
+                                                  action:@selector(dismissView)];
     singleFingerTap.minimumPressDuration=0;
     [_profileView.background addGestureRecognizer:singleFingerTap];
 
@@ -92,7 +96,31 @@
     }];
 }
 
-- (void) buttonTapped{
+- (void) buttonPress:(UIButton*)button {
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(.9,.9);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void) buttonRelease:(UIButton*)button {
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(1.05,1.05);
+    } completion:^(BOOL finished) {
+    }];
+    [UIView animateWithDuration:.2 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(1.0,1.0);
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (void) dismissView{
     [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)darkenBackground{
+   [ _profileView.background setBackgroundColor: [UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:0.8]];
+
 }
 @end

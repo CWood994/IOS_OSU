@@ -30,14 +30,36 @@
     NSLog(@"\n**** loadView: %@ ****\n",self.class);
 
     _settingsView = [[SettingsView alloc] initWithFrame:CGRectZero];
-    [_settingsView.exitButton addTarget:self action:@selector(dismissViewController) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.exitButton addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.exitButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.exitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.exitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.creditsButton addTarget:self action:@selector(creditsButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.creditsButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.creditsButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.creditsButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.tbdButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.tbdButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.tbdButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.gameSettingsButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.gameSettingsButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.gameSettingsButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.signOutButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.signOutButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.signOutButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.quitButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.quitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.quitButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.muteButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
+    [_settingsView.muteButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
+    [_settingsView.muteButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    
+    
     UILongPressGestureRecognizer *singleFingerTap =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                  action:@selector(dismissViewController)];
+                                                  action:@selector(dismissView)];
     singleFingerTap.minimumPressDuration=0;
     [_settingsView.background addGestureRecognizer:singleFingerTap];
-    [_settingsView.creditsButton addTarget:self action:@selector(creditsButtonTapped) forControlEvents:UIControlEventTouchUpInside];
-
     
     [self setView:_settingsView];
 }
@@ -95,12 +117,38 @@
     }];
 }
 
-- (void) dismissViewController{
+- (void) buttonPress:(UIButton*)button {
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(.9,.9);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void) buttonRelease:(UIButton*)button {
+    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(1.05,1.05);
+    } completion:^(BOOL finished) {
+    }];
+    [UIView animateWithDuration:.2 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(1.0,1.0);
+    } completion:^(BOOL finished) {
+    }];
+}
+
+
+- (void) dismissView{
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 -(void)creditsButtonTapped{
     _creditsViewController = [[CreditsViewController alloc]init];
+    _creditsViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController: _creditsViewController animated:YES completion: nil];
+}
+
+- (void)darkenBackground{
+    [ _settingsView.background setBackgroundColor: [UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:0.8]];
+    
 }
 @end

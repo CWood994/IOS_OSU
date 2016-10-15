@@ -63,6 +63,8 @@
     [_playButton addBottomConstraint:PLAY_BUTTON_BOTTOM_HEIGHT];
     
     [_playButton setBackgroundImage:[UIImage imageNamed:@"PlayButton.png"] forState:UIControlStateNormal];
+    _playButton.adjustsImageWhenHighlighted = NO;
+
 }
 
 - (void) setupSettingsButton{
@@ -76,6 +78,8 @@
     [_settingsButton addTopConstraint:15];
     
     [_settingsButton setBackgroundImage:[UIImage imageNamed:@"SettingsButton.png"] forState:UIControlStateNormal];
+    _settingsButton.adjustsImageWhenHighlighted = NO;
+
 }
 
 - (void) setupProfileButton{
@@ -89,6 +93,7 @@
     [_profileButton addTopConstraint:15];
     
     [_profileButton setBackgroundImage:[UIImage imageNamed:@"UserButton.png"] forState:UIControlStateNormal];
+    _profileButton.adjustsImageWhenHighlighted = NO;
 }
 
 //Possible change level (environment) button? or image? need something
@@ -97,12 +102,14 @@
     [_levelButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self addSubview:_levelButton];
     
-    [_levelButton addTrailingConstraint:50];
-    [_levelButton addTopConstraint:100];
-    [_levelButton addLeadingConstraint:50];
-    [_levelButton addBottomConstraint:170];
+    [_levelButton addTrailingConstraint:LEVEL_BUTTON_TRAILING];
+    [_levelButton addTopConstraint:LEVEL_BUTTON_TOP];
+    [_levelButton addLeadingConstraint:LEVEL_BUTTON_LEADING];
+    [_levelButton addBottomConstraint:LEVEL_BUTTON_BOTTOM];
     
     [_levelButton setBackgroundImage:[UIImage imageNamed:@"LevelImage.png"] forState:UIControlStateNormal];
+    _levelButton.adjustsImageWhenHighlighted = NO;
+
 }
 
 -(void) setupUserDataView{
@@ -146,6 +153,7 @@
     [_coinButton addBottomConstraint:2];
     
     [_coinButton setBackgroundImage:[UIImage imageNamed:@"CoinIcon.png"] forState:UIControlStateNormal];
+    _coinButton.adjustsImageWhenHighlighted = NO;
     
     _coinAmountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [_coinAmountLabel setTranslatesAutoresizingMaskIntoConstraints:NO];

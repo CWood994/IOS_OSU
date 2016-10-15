@@ -8,6 +8,7 @@
 
 #import "SettingsView.h"
 #import "UIView+Autolayout.h"
+#import "SunflowerCommon.h"
 
 @interface SettingsView() {
     UIView *_menuBackgroundOutter;
@@ -134,6 +135,8 @@
     [_exitButton addTrailingConstraint:10];
 
     [_exitButton setBackgroundImage:[UIImage imageNamed:@"CloseButton.png"] forState:UIControlStateNormal];
+    _exitButton.adjustsImageWhenHighlighted = NO;
+
 }
 
 - (void) setupCreditsButton{
@@ -142,7 +145,7 @@
     [_menuBackgroundOutter addSubview:_creditsButton];
     
     [_creditsButton addLeadingConstraint:12];
-    [_creditsButton addHeightConstraint:80];
+    [_creditsButton addHeightConstraint:SETTINGS_BUTTON_HEIGHT];
     [_creditsButton addTopConstraint:50];
     [_creditsButton addTrailingConstraint:12];
     
@@ -161,8 +164,8 @@
     [_menuBackgroundOutter addSubview:_signOutButton];
     
     [_signOutButton addLeadingConstraint:12];
-    [_signOutButton addHeightConstraint:80];
-    [_signOutButton addTopConstraint:326];
+    [_signOutButton addHeightConstraint:SETTINGS_BUTTON_HEIGHT];
+    [_signOutButton addTopConstraint:SETTINGS_SIGN_OUT_TOP];
     [_signOutButton addTrailingConstraint:12];
     
     [_signOutButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
@@ -180,8 +183,8 @@
     [_menuBackgroundOutter addSubview:_gameSettingsButton];
     
     [_gameSettingsButton addLeadingConstraint:12];
-    [_gameSettingsButton addHeightConstraint:80];
-    [_gameSettingsButton addTopConstraint:234];
+    [_gameSettingsButton addHeightConstraint:SETTINGS_BUTTON_HEIGHT];
+    [_gameSettingsButton addTopConstraint:SETTINGS_GAME_SETTINGS_TOP];
     [_gameSettingsButton addTrailingConstraint:12];
     
     [_gameSettingsButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
@@ -199,8 +202,8 @@
     [_menuBackgroundOutter addSubview:_tbdButton];
     
     [_tbdButton addLeadingConstraint:12];
-    [_tbdButton addHeightConstraint:80];
-    [_tbdButton addTopConstraint:142];
+    [_tbdButton addHeightConstraint:SETTINGS_BUTTON_HEIGHT];
+    [_tbdButton addTopConstraint:SETTINGS_TBD_TOP];
     [_tbdButton addTrailingConstraint:12];
     
     [_tbdButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
@@ -218,9 +221,9 @@
     [_menuBackgroundOutter addSubview:_muteButton];
     
     [_muteButton addLeadingConstraint:12];
-    [_muteButton addHeightConstraint:80];
-    [_muteButton addTopConstraint:418];
-    [_muteButton addWidthConstraint:100];
+    [_muteButton addHeightConstraint:SETTINGS_BUTTON_HEIGHT];
+    [_muteButton addTopConstraint:SETTINGS_MUTE_TOP];
+    [_muteButton addWidthConstraint:110];
     
     [_muteButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
     [_muteButton.layer setCornerRadius:10];
@@ -236,9 +239,9 @@
     [_quitButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_menuBackgroundOutter addSubview:_quitButton];
     
-    [_quitButton addWidthConstraint:100];
-    [_quitButton addHeightConstraint:80];
-    [_quitButton addTopConstraint:418];
+    [_quitButton addWidthConstraint:110];
+    [_quitButton addHeightConstraint:SETTINGS_BUTTON_HEIGHT];
+    [_quitButton addTopConstraint:SETTINGS_QUIT_TOP];
     [_quitButton addTrailingConstraint:12];
     
     [_quitButton setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]];
