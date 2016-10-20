@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface MenuViewController : UIViewController
-
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @end

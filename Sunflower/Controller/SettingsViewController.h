@@ -11,6 +11,7 @@
 @protocol SettingsViewControllerDelegate
 @required
 -(void)signOutButtonTapped;
+-(void)muteButtonTapped;
 @end
 
 @interface SettingsViewController : UIViewController

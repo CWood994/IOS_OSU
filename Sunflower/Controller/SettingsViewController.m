@@ -9,6 +9,8 @@
 #import "SettingsViewController.h"
 #import "SettingsView.h"
 #import "CreditsViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface SettingsViewController (){
     SettingsView *_settingsView;
@@ -55,6 +57,7 @@
     [_settingsView.muteButton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown];
     [_settingsView.muteButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpInside];
     [_settingsView.muteButton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchUpOutside];
+    [_settingsView.muteButton addTarget:self action:@selector(muteButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     
     
     UILongPressGestureRecognizer *singleFingerTap =
@@ -120,19 +123,25 @@
 }
 
 - (void) buttonPress:(UIButton*)button {
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        button.transform = CGAffineTransformMakeScale(.9,.9);
+    //http://www.soundjay.com/button-sounds-5.html
+    SystemSoundID soundID;
+    NSURL *soundUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"buttonClick" ofType:@"mp3"]];
+    AudioServicesCreateSystemSoundID ((__bridge CFURLRef)soundUrl, &soundID);
+    AudioServicesPlaySystemSound(soundID);
+    
+    [UIView animateWithDuration:.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(.95,.95);
     } completion:^(BOOL finished) {
         
     }];
 }
 
 - (void) buttonRelease:(UIButton*)button {
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         button.transform = CGAffineTransformMakeScale(1.05,1.05);
     } completion:^(BOOL finished) {
     }];
-    [UIView animateWithDuration:.2 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:.1 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         button.transform = CGAffineTransformMakeScale(1.0,1.0);
     } completion:^(BOOL finished) {
     }];
@@ -156,6 +165,11 @@
 - (void) signOutButtonTapped
 {
     [self.delegate signOutButtonTapped];
+}
+
+- (void) muteButtonTapped
+{
+    [self.delegate muteButtonTapped];
 }
 
 -(void)quitButtonTapped

@@ -15,14 +15,27 @@
     MenuView *_MenuView;
     SettingsViewController *_SettingsViewController;
     ProfileViewController *_ProfileViewController;
+    bool _muted;
+    
 }
 @end
 
 @implementation MenuViewController
 
+@synthesize audioPlayer = _audioPlayer;
+
 - (void)viewDidLoad {
     NSLog(@"\n**** viewDidLoad: %@ ****\n",self.class);
-    
+    //http://www.orangefreesounds.com/terra-incognita-instrumental-music/#comments
+    NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"backgroundMusic" ofType:@"mp3"]];
+     _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [_audioPlayer setNumberOfLoops:-1];
+    [_audioPlayer setVolume:.05];
+    [_audioPlayer play];
+    _muted = NO;
     [super viewDidLoad];
 }
 
@@ -151,19 +164,25 @@
 }
 
 - (void) buttonPress:(UIButton*)button {
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        button.transform = CGAffineTransformMakeScale(.9,.9);
+    //http://www.soundjay.com/button-sounds-5.html
+    SystemSoundID soundID;
+    NSURL *soundUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"buttonClick" ofType:@"mp3"]];
+    AudioServicesCreateSystemSoundID ((__bridge CFURLRef)soundUrl, &soundID);
+    AudioServicesPlaySystemSound(soundID);
+    
+    [UIView animateWithDuration:.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        button.transform = CGAffineTransformMakeScale(.95,.95);
     } completion:^(BOOL finished) {
     
     }];
 }
 
 - (void) buttonRelease:(UIButton*)button {
-    [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         button.transform = CGAffineTransformMakeScale(1.05,1.05);
     } completion:^(BOOL finished) {
     }];
-    [UIView animateWithDuration:.2 delay:0.2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:.1 delay:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
         button.transform = CGAffineTransformMakeScale(1.0,1.0);
     } completion:^(BOOL finished) {
     }];
@@ -191,6 +210,8 @@
 }
 
 -(void) signOutButtonTapped{
+    [_audioPlayer stop];
+    
     CATransition* transition = [CATransition animation];
     transition.duration = 0.5;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -199,4 +220,15 @@
     [self.navigationController.view.layer addAnimation:transition forKey:nil];
     [self.navigationController popViewControllerAnimated:NO];
 }
+
+- (void) muteButtonTapped{
+    if(_muted){
+        [_audioPlayer play];
+        _muted = NO;
+    }else{
+        [_audioPlayer pause];
+        _muted = YES;
+    }
+}
+
 @end

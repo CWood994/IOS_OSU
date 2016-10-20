@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		284D1C5E1DB9791000036750 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 284D1C5D1DB9791000036750 /* backgroundMusic.mp3 */; };
+		284D1C5F1DB9791000036750 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 284D1C5D1DB9791000036750 /* backgroundMusic.mp3 */; };
+		284D1C611DB9820100036750 /* buttonClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 284D1C601DB9820100036750 /* buttonClick.mp3 */; };
+		284D1C621DB9820100036750 /* buttonClick.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 284D1C601DB9820100036750 /* buttonClick.mp3 */; };
 		284E433E1DB1B8E400E354B8 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E433D1DB1B8E400E354B8 /* LoginView.m */; };
 		284E433F1DB1B8E400E354B8 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E433D1DB1B8E400E354B8 /* LoginView.m */; };
 		284E43421DB1B96700E354B8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284E43411DB1B96700E354B8 /* LoginViewController.m */; };
@@ -67,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		284D1C5D1DB9791000036750 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
+		284D1C601DB9820100036750 /* buttonClick.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttonClick.mp3; sourceTree = "<group>"; };
 		284E433C1DB1B8E400E354B8 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		284E433D1DB1B8E400E354B8 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		284E43401DB1B96700E354B8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -225,6 +231,8 @@
 		28665A231DA74C3200FF3829 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				284D1C601DB9820100036750 /* buttonClick.mp3 */,
+				284D1C5D1DB9791000036750 /* backgroundMusic.mp3 */,
 				28B80B1A1DA80B6D006D9635 /* test.jpg */,
 				28B80B1D1DA80DB6006D9635 /* PlayButton.png */,
 				28B80B061DA80AA1006D9635 /* CloseButton.png */,
@@ -323,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284D1C5E1DB9791000036750 /* backgroundMusic.mp3 in Resources */,
 				28B80B181DA80AA1006D9635 /* UserButton.png in Resources */,
 				28B80B1B1DA80B6D006D9635 /* test.jpg in Resources */,
 				28B80B121DA80AA1006D9635 /* LevelImage.png in Resources */,
@@ -333,6 +342,7 @@
 				28B80B161DA80AA1006D9635 /* BackgroundImage.jpg in Resources */,
 				28665A2A1DA7504C00FF3829 /* Images.xcassets in Resources */,
 				28B80A471DA75BA4006D9635 /* Default-568h@2x.png in Resources */,
+				284D1C611DB9820100036750 /* buttonClick.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284D1C5F1DB9791000036750 /* backgroundMusic.mp3 in Resources */,
 				28B80B191DA80AA1006D9635 /* UserButton.png in Resources */,
 				28B80B1C1DA80B6D006D9635 /* test.jpg in Resources */,
 				28B80B131DA80AA1006D9635 /* LevelImage.png in Resources */,
@@ -350,6 +361,7 @@
 				28B80B171DA80AA1006D9635 /* BackgroundImage.jpg in Resources */,
 				28665A181DA74AF300FF3829 /* Info.plist in Resources */,
 				28665A2B1DA7504C00FF3829 /* Images.xcassets in Resources */,
+				284D1C621DB9820100036750 /* buttonClick.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

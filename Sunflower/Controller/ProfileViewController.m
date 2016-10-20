@@ -8,6 +8,8 @@
 
 #import "ProfileViewController.h"
 #import "ProfileView.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface ProfileViewController (){
     ProfileView *_profileView;
@@ -97,6 +99,12 @@
 }
 
 - (void) buttonPress:(UIButton*)button {
+    //http://www.soundjay.com/button-sounds-5.html
+    SystemSoundID soundID;
+    NSURL *soundUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"buttonClick" ofType:@"mp3"]];
+    AudioServicesCreateSystemSoundID ((__bridge CFURLRef)soundUrl, &soundID);
+    AudioServicesPlaySystemSound(soundID);
+    
     [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         button.transform = CGAffineTransformMakeScale(.9,.9);
     } completion:^(BOOL finished) {
